@@ -77,6 +77,8 @@ def run_trial(
         num_labels=num_labels,
         id2label=dict(enumerate(label_names)),
         label2id={name: i for i, name in enumerate(label_names)},
+        # Replace any existing classifier head that has a different number of classes.
+        ignore_mismatched_sizes=True,
     )
 
     use_gpu = torch.cuda.is_available()
